@@ -14,7 +14,7 @@ i = 1
 # open chrome
 driver = webdriver.Chrome('C:\chromedriver')
 ## maximize window
-#driver.maximize_window()
+# driver.maximize_window()
 # open whatsapp homepage for scanning
 driver.get("https://web.whatsapp.com")
 # wait for some time(in sec)
@@ -31,18 +31,18 @@ for i in range(frequency):
     # open the link
     driver.get(url + str(b3.value))
     # wait for some time(in sec)
-    time.sleep(2)
+    time.sleep(1)
     ## continue_to_chat = driver.find_element(By.xpath("//input[@id='_9rne _9vcv _9u4i _9scb']"))
     continue_to_chat = driver.find_element_by_id("action-button")
     continue_to_chat.click()
     # driver.find_element_by_text('Continue to Chat')
     continue_to_chat.click()
-    time.sleep(2)
+    time.sleep(1)
     use_whatsapp_web = driver.find_element_by_xpath("// a[contains(text(),'use WhatsApp Web')]")
     # use_whatsapp_web = driver.find_element_by_text('use WhatsApp Web')
     # use_whatsapp_web = driver.find_element(By.xpath("//input[@class='_9rne _9vcv _9vcx']")) not possible as same as download button
     use_whatsapp_web.click()
-    time.sleep(25)
+    time.sleep(20)
     # message = driver.find_element(By.xpath("//input[@class='_13NKt copyable-text selectable-text']"))
     # message = driver.find_element_by_text('Type a message')
     message = driver.find_element_by_xpath('//*[@title="Type a message"]')
@@ -51,7 +51,7 @@ for i in range(frequency):
     keyboard = Controller()
     keyboard.press(Key.enter)
     keyboard.release(Key.enter)
-    time.sleep(15)
+    time.sleep(8)
 
 # Close the browser
 driver.quit()
