@@ -9,7 +9,7 @@ from pynput.keyboard import Key, Controller
 filepath = "C:/Users/Raghav/Desktop/contact_list.xlsx"
 wb = load_workbook(filepath)
 sheet = wb.active
-frequency = 3
+frequency = 2
 i = 1
 # open chrome
 driver = webdriver.Chrome('C:\chromedriver')
@@ -19,6 +19,14 @@ driver = webdriver.Chrome('C:\chromedriver')
 driver.get("https://web.whatsapp.com")
 # wait for some time(in sec)
 time.sleep(22)
+keyboard = Controller()
+
+
+def shortcut():
+    driver.find_element_by_xpath('//*[@title="Type a message"]').send_keys(Keys.SHIFT, Keys.ENTER)
+Brochure = "C:/Users/Raghav/Desktop/Brochure.jpg"
+
+
 for i in range(frequency):
     b3 = sheet.cell(row=i + 1, column=2)
     url = "https://wa.me/+91"
@@ -47,11 +55,37 @@ for i in range(frequency):
     # message = driver.find_element_by_text('Type a message')
     message = driver.find_element_by_xpath('//*[@title="Type a message"]')
     # type message
-    message.send_keys("Hello")
-    keyboard = Controller()
+    message.send_keys("“SUMMER CAMP 2022” @ Meera Marg, Bani Park ")
+    shortcut()
+    message.send_keys("Enhance your life skills learn something new under Professional guidance  - "
+                      "Musical Instruments, Skating, Dance, Drawing, Painting, Art & Craft, Spoken English, "
+                      "Handwriting, UCMAS, Fitness for Kids, Tuition PG to VIII ")
+    shortcut()
+    message.send_keys("SPECIAL PACKAGES FOR KIDS ")
+    driver.find_element_by_tag_name('body').send_keys(Keys.COMMAND)
+    message.send_keys("AIR-COOLED CAMPUS, TRANSPORT AVAILABLE")
+    shortcut()
+    shortcut()
+    message.send_keys("Venue: Modern Gurukul Academy ")
+    shortcut()
+    message.send_keys("BANI PARK: D-92(Z) MeeraMarg Banipark, Jaipur")
+    shortcut()
+    message.send_keys("Contact:9784597275 , 9680836271 ")
+    shortcut()
+    shortcut()
+    message.send_keys("“COOL SUMMER CAMP 2022”")
+    shortcut()
+    message.send_keys("SPECIAL PACKAGES FOR KIDS (Age group 3 to 8 years)")
+    shortcut()
+    message.send_keys("We humbly request to forward this message to your relatives, friends & groups.")
+    shortcut()
+    message.send_keys(Brochure)
+
     keyboard.press(Key.enter)
     keyboard.release(Key.enter)
     time.sleep(8)
 
 # Close the browser
 driver.quit()
+
+
