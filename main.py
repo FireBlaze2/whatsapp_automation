@@ -5,32 +5,34 @@ from openpyxl import load_workbook
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from pynput.keyboard import Key, Controller
+from seleniumbase import BaseCase
+
 
 filepath = "C:/Users/Raghav/Desktop/contact_list.xlsx"
+
 wb = load_workbook(filepath)
 sheet = wb.active
 frequency = 2
 i = 1
 # open chrome
 driver = webdriver.Chrome('C:\chromedriver')
-## maximize window
-# driver.maximize_window()
 # open whatsapp homepage for scanning
 driver.get("https://web.whatsapp.com")
 # wait for some time(in sec)
-time.sleep(22)
+time.sleep(20)
 keyboard = Controller()
 
 
 def shortcut():
     driver.find_element_by_xpath('//*[@title="Type a message"]').send_keys(Keys.SHIFT, Keys.ENTER)
-Brochure = "C:/Users/Raghav/Desktop/Brochure.jpg"
 
 
 for i in range(frequency):
     b3 = sheet.cell(row=i + 1, column=2)
     url = "https://wa.me/+91"
+    # switches to the next no.
     i + 1
+    # prints out the link
     print(url + str(b3.value))
     # open new window
     driver.execute_script("window.open('');")
@@ -39,30 +41,39 @@ for i in range(frequency):
     # open the link
     driver.get(url + str(b3.value))
     # wait for some time(in sec)
-    time.sleep(1)
-    ## continue_to_chat = driver.find_element(By.xpath("//input[@id='_9rne _9vcv _9u4i _9scb']"))
+    time.sleep(2)
+    # locating continue to chat
     continue_to_chat = driver.find_element_by_id("action-button")
-    continue_to_chat.click()
-    # driver.find_element_by_text('Continue to Chat')
+    # continue_to_chat.click()
     continue_to_chat.click()
     time.sleep(1)
+    # clicking on use whatsapp web
     use_whatsapp_web = driver.find_element_by_xpath("// a[contains(text(),'use WhatsApp Web')]")
-    # use_whatsapp_web = driver.find_element_by_text('use WhatsApp Web')
-    # use_whatsapp_web = driver.find_element(By.xpath("//input[@class='_9rne _9vcv _9vcx']")) not possible as same as download button
     use_whatsapp_web.click()
-    time.sleep(20)
-    # message = driver.find_element(By.xpath("//input[@class='_13NKt copyable-text selectable-text']"))
-    # message = driver.find_element_by_text('Type a message')
+    # waiting for the no. to load
+    time.sleep(15)
+    # attaching image
+    driver.find_element_by_xpath('//div[@title = "Attach"]').click()
+    image_box = driver.find_element_by_xpath(
+        '//input[@accept="image/*,video/mp4,video/3gpp,video/quicktime"]')
+    # locating image
+    image_box.send_keys('C:/Users/Raghav/Desktop/Brochure.jpg')
+    time.sleep(3)
+    # pressing send button
+    send_button = driver.find_element_by_xpath('//span[@data-icon="send"]')
+    send_button.click()
+    # wait for some time
+    time.sleep(3)
+    # typing message
     message = driver.find_element_by_xpath('//*[@title="Type a message"]')
-    # type message
-    message.send_keys("“SUMMER CAMP 2022” @ Meera Marg, Bani Park ")
+    message.send_keys("*“SUMMER CAMP 2022”* @ Meera Marg, Bani Park ")
     shortcut()
     message.send_keys("Enhance your life skills learn something new under Professional guidance  - "
                       "Musical Instruments, Skating, Dance, Drawing, Painting, Art & Craft, Spoken English, "
                       "Handwriting, UCMAS, Fitness for Kids, Tuition PG to VIII ")
     shortcut()
     message.send_keys("SPECIAL PACKAGES FOR KIDS ")
-    driver.find_element_by_tag_name('body').send_keys(Keys.COMMAND)
+    shortcut()
     message.send_keys("AIR-COOLED CAMPUS, TRANSPORT AVAILABLE")
     shortcut()
     shortcut()
@@ -70,22 +81,23 @@ for i in range(frequency):
     shortcut()
     message.send_keys("BANI PARK: D-92(Z) MeeraMarg Banipark, Jaipur")
     shortcut()
-    message.send_keys("Contact:9784597275 , 9680836271 ")
+    message.send_keys("Contact: 9784597275 , 9680836271 ")
     shortcut()
     shortcut()
-    message.send_keys("“COOL SUMMER CAMP 2022”")
+    message.send_keys("*“COOL SUMMER CAMP 2022”*")
     shortcut()
     message.send_keys("SPECIAL PACKAGES FOR KIDS (Age group 3 to 8 years)")
     shortcut()
     message.send_keys("We humbly request to forward this message to your relatives, friends & groups.")
     shortcut()
-    message.send_keys(Brochure)
-
+    # press enter
     keyboard.press(Key.enter)
     keyboard.release(Key.enter)
-    time.sleep(8)
+    # wait for some time
+    time.sleep(2)
 
 # Close the browser
 driver.quit()
+
 
 
