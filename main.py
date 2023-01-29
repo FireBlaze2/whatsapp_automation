@@ -12,9 +12,9 @@ from seleniumbase import BaseCase
 filepath = "C:/Users/Raghav/Desktop/contact_list.xlsx"
 wb = load_workbook(filepath)
 sheet = wb.active
-frequency = 1835
+frequency = 113710
 # open chrome
-driver = webdriver.Chrome('C:\chromedriver')
+driver = webdriver.Chrome('C:\chromedriver\chromedriver')
 # open whatsapp homepage for scanning
 driver.get("https://web.whatsapp.com")
 # wait for some time(in sec)
@@ -29,12 +29,13 @@ def shortcut():
 
 
 i = 0
+l = 0
 while i <= frequency:
     while i <= frequency:
         b3 = sheet.cell(row=i+1, column=2)
         # url = "https://wa.me/+91"
         # prints out the link
-        print((b3.value))
+        print("Sr. no."+(str(i+1)))
         # print(url + str(b3.value))
         # Switch to the new window
         driver.switch_to.window(driver.window_handles[1])
@@ -59,46 +60,77 @@ while i <= frequency:
             driver.find_element_by_xpath('//div[@title = "Attach"]').click()
         except NoSuchElementException:
             print(str(b3.value) + " NOT ON WHATSAPP")
+            l += 1
             i += 1
             break
         image_box = driver.find_element_by_xpath(
             '//input[@accept="image/*,video/mp4,video/3gpp,video/quicktime"]')
         # locating image
         image_box.send_keys('C:/Users/Raghav/Desktop/Brochure.jpg')
-        time.sleep(3)
+        time.sleep(2)
         # pressing send button
         driver.find_element_by_xpath('//span[@data-icon="send"]').click()
         # wait for some time
-        time.sleep(3)
+        time.sleep(1)
         # typing message
         message = driver.find_element_by_xpath('//*[@title="Type a message"]')
-        message.send_keys("*“SUMMER CAMP 2022”* @ Meera Marg, Bani Park ")
-        shortcut()
-        message.send_keys("Enhance your life skills learn something new under Professional guidance  - "
-                          "Musical Instruments, Skating, Dance, Drawing, Painting, Art & Craft, Spoken English, "
-                          "Handwriting, UCMAS, Fitness for Kids, Tuition PG to VIII ")
-        shortcut()
-        message.send_keys("SPECIAL PACKAGES FOR KIDS ")
-        shortcut()
-        message.send_keys("AIR-COOLED CAMPUS, TRANSPORT AVAILABLE")
+        message.send_keys("Modern Gurukul Academy @Banipark @Vidyadhar nagar")
         shortcut()
         shortcut()
-        message.send_keys("Venue: Modern Gurukul Academy ")
+        message.send_keys("Serving in Banipark since 23 years")
+        shortcut()
+        shortcut()
+        message.send_keys("*Brings to you a one stop centre where your child can get 360° personality development*")
+        shortcut()
+        message.send_keys("*Join -*")
+        shortcut()
+        message.send_keys("*• Tuitions (NUR. TO VIII)*")
+        shortcut()
+        message.send_keys("*• UCMAS*")
+        shortcut()
+        message.send_keys("*• Dance*")
+        shortcut()
+        message.send_keys("*• Drawing*")
+        shortcut()
+        message.send_keys("*• Musical Instruments*")
+        shortcut()
+        message.send_keys("*• Art and Craft*")
+        shortcut()
+        message.send_keys("*• Handwriting improvement*")
+        shortcut()
+        message.send_keys("*• Calligraphy*")
+        shortcut()
+        message.send_keys("*• Spoken English*")
+        shortcut()
+        message.send_keys("*• Skating (Banipark)*")
+        shortcut()
+        shortcut()
+        message.send_keys("Let your child learn and explore the world of creativity all under one roof..! All the "
+                          "classes will help groom your childs school and co-curricular activities together..")
+        shortcut()
+        shortcut()
+        message.send_keys("We have multiple discount packages available starting from a week to monthly basis.")
+        shortcut()
+        shortcut()
+        message.send_keys("Hurry join now...don't waste even a day!!!")
+        shortcut()
         shortcut()
         message.send_keys("BANIPARK: D-92(Z) MeeraMarg Banipark, Jaipur")
         shortcut()
-        message.send_keys("Contact: 9784597275 , 9680836271 ")
+        shortcut()
+        message.send_keys("Vidhyadhar Nagar: 144, Opp. MGPS, Shankar Colony Mall Road, Vidhyadhar Nagar, Jaipur")
+        shortcut()
+        message.send_keys("https://bit.ly/3Q62Emg")
+        shortcut()
+        message.send_keys("Find us on Instagram -> www.instagram.com/moderngurukulacademy")
         shortcut()
         shortcut()
-        message.send_keys("*“COOL SUMMER CAMP 2022”*")
-        shortcut()
-        message.send_keys("SPECIAL PACKAGES FOR KIDS (Age group 3 to 8 years)")
-        shortcut()
-        message.send_keys("We humbly request to forward this message to your relatives, friends & groups.")
-        shortcut()
+        message.send_keys("For More Details Contact: 9784597275 , 9680836271")
+
         # press enter
         keyboard.press(Key.enter)
         keyboard.release(Key.enter)
+        print("Sent Messages = " + str((i+1)-l))
         i += 1
         # wait for some time
         time.sleep(2)
