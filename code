@@ -1,0 +1,31 @@
+ message = driver.find_element_by_xpath('//*[@title="Type a message"]')
+        message.send_keys("*“SUMMER CAMP 2022”* @ Meera Marg, Bani Park ")
+        shortcut()
+        message.send_keys("Enhance your life skills learn something new under Professional guidance  - "
+                          "Musical Instruments, Skating, Dance, Drawing, Painting, Art & Craft, Spoken English, "
+                          "Handwriting, UCMAS, Fitness for Kids, Tuition PG to VIII ")
+        shortcut()
+        message.send_keys("SPECIAL PACKAGES FOR KIDS ")
+        shortcut()
+        message.send_keys("AIR-COOLED CAMPUS, TRANSPORT AVAILABLE")
+        shortcut()
+        shortcut()
+        message.send_keys("Venue: Modern Gurukul Academy ")
+        shortcut()
+        message.send_keys("BANIPARK: D-92(Z) MeeraMarg Banipark, Jaipur")
+        shortcut()
+        message.send_keys("Contact: 9784597275 , 9680836271 ")
+        shortcut()
+        shortcut()
+        message.send_keys("*“COOL SUMMER CAMP 2022”*")
+        shortcut()
+        message.send_keys("SPECIAL PACKAGES FOR KIDS (Age group 3 to 8 years)")
+        shortcut()
+        message.send_keys("We humbly request to forward this message to your relatives, friends & groups.")
+        shortcut()
+        # press enter
+        keyboard.press(Key.enter)
+        keyboard.release(Key.enter)
+        i += 1
+        # wait for some time
+        time.sleep(2)
